@@ -131,18 +131,42 @@ install_vtuner_and_satip() {
         echo " $CheckMark vtunerc ist bereits installiert."
     else
         echo " ⬇️  Installiere vtunerc-Modul über DKMS ..."
+
+        set -e
+
         sudo apt update
-        sudo apt install -y git build-essential linux-headers-$(uname -r) libcap-dev dkms
+        sudo apt install -y dkms git build-essential linux-headers-$(uname -r) libcap-dev psmisc
 
         cd /tmp || exit 1
-        git clone https://github.com/joed74/vtuner-ng.git
-        cd vtuner-ng || exit 1
+
+        if [ ! -d vtuner-ng ]; then
+            git clone https://github.com/joed74/vtuner-ng.git
+        else
+            echo " vtuner-ng Verzeichnis existiert bereits."
+        fi
 
         sudo mkdir -p /usr/src/vtuner-ng-0.0.1
-        sudo cp -r . /usr/src/vtuner-ng-0.0.1
+
+        cat <<EOF | sudo tee /usr/src/vtuner-ng-0.0.1/dkms.conf >/dev/null
+PACKAGE_NAME="vtuner-ng"
+PACKAGE_VERSION="0.0.1"
+BUILT_MODULE_NAME[0]="vtunerc"
+DEST_MODULE_LOCATION[0]="/kernel/drivers/media/dvb-frontends/"
+AUTOINSTALL="yes"
+MAKE[0]="make -C /lib/modules/\${kernelver}/build M=\${dkms_tree}/\${PACKAGE_NAME}/\${PACKAGE_VERSION}/build"
+CLEAN="make -C /lib/modules/\${kernelver}/build M=\${dkms_tree}/\${PACKAGE_NAME}/\${PACKAGE_VERSION}/build clean"
+EOF
+
+        cd vtuner-ng/kernel || exit 1
+#        cd /usr/src/vtuner-ng-0.0.1
+        sudo ln -sf . build
+        sudo cp -r * /usr/src/vtuner-ng-0.0.1/
+
+        sudo dkms remove -m vtuner-ng -v 0.0.1 --all || true
         sudo dkms add -m vtuner-ng -v 0.0.1
         sudo dkms build -m vtuner-ng -v 0.0.1
         sudo dkms install -m vtuner-ng -v 0.0.1
+
         echo " $CheckMark vtunerc erfolgreich installiert."
     fi
 
