@@ -1,2 +1,2 @@
 # vtuner-cli
-config tool / CLI interface for vtuner managemant 
+vtuner config tool / CLI interface managemant 
