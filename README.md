@@ -33,23 +33,18 @@
         875 /usr/local/bin/satip -s 192.168.1.9 -p 554 -d /dev/vtunerc3 -D DVBS DVBS2 -f 8
         
         📋 Aktuelle Zuordnung (vtuner → SatIP Tuner): 4
-          vtunerc0 → frontend 5
-          vtunerc1 → frontend 6
-          vtunerc2 → frontend 7
-          vtunerc3 → frontend 8
+          vtunerc0 → 192.168.1.9 → satIP tuner 5 
+          vtunerc1 → 192.168.1.9 → satIP tuner 6 
+          vtunerc2 → 192.168.1.9 → satIP tuner 7 
+          vtunerc3 → 192.168.1.9 → satIP tuner 8 
         
-        
-        +---------------------------------------------+
-        | ✔  Das Modul vtunerc ist geladen.           |
-        +---------------------------------------------+
-        | 1) vtuner Module entladen                   |
-        | 2) Neu laden (Entladen + neue devices)      |
-        | 3) SAT>IP-Verbindungen beenden              |
-        | 4) Alle vtuner/SAT>IP anzeigen              |
-        | 5) VDR neu starten                          |
-        | 6) systemd-Service vtuner-satip erstellen   |
-        | 7) systemd-Service vtuner-satip löschen     |
-        | 8) vtuner/satip installieren oder prüfen    |
-        | 9) Abbrechen                                |
-        +---------------------------------------------+
-        =>   
+        +----------------------------------------------------------------------------------------+
+        | ✔  Das Modul vtunerc ist geladen.                                                      |
+        +----------------------------------------------------------------------------------------+
+        | 1) vtuner Module entladen                  5) VDR neu starten                          |
+        | 2) Neu laden (Entladen + neue devices)     6) systemd-Service vtuner-satip erstellen   |
+        | 3) SAT>IP-Verbindungen beenden             7) systemd-Service vtuner-satip löschen     |
+        | 4) Alle vtuner/SAT>IP anzeigen             8) vtuner/satip installieren oder prüfen    |
+        |                                            9) Abbrechen                                |
+        +----------------------------------------------------------------------------------------+
+        => 
