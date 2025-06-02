@@ -30,4 +30,4 @@
  
         --------------------------------------------------------------------------------------------------------
 
-        https://youtu.be/Q2HfrEA7dbE
+[![vtuner-cli YouTube Demo](https://img.youtube.com/vi/Q2HfrEA7dbE/0.jpg)](https://youtu.be/Q2HfrEA7dbE)
