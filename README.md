@@ -2,13 +2,14 @@
         vtuner config tool / CLI interface managemant 
 
         --------------------------------------------------------------------------------------------------------
-
+        
         +---------------------------------------------+
         | ✖  Das Modul vtunerc ist nicht geladen.     |
         | 1) vtuner Module laden                      |
         | 2) vtuner/satip installieren oder prüfen    |
-        | 3) VDR neu starten                          |
-        | 4) Abbrechen                                |
+        | 3) systemd-Service verwalten                |
+        | 4) VDR neu starten                          |
+        | x) Zurück                                   |
         +---------------------------------------------+
         => 
         
